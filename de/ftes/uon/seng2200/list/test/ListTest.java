@@ -1,7 +1,11 @@
 package de.ftes.uon.seng2200.list.test;
 
+import java.util.ConcurrentModificationException;
+
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import de.ftes.uon.seng2200.list.List;
 import de.ftes.uon.seng2200.list.impl.ListImpl;
@@ -38,5 +42,29 @@ public class ListTest {
 		list.append(2);
 		list.put(1, 3);
 		Assert.assertEquals((Integer) 3, list.get(1));
+	}
+	
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+	
+	@Test
+	public void testIterator() {
+		List<Integer> list = new ListImpl<>();
+		list.append(1);
+		list.append(2);
+		list.append(3);
+		
+		// should work if not modified
+		for (@SuppressWarnings("unused") Integer i : list) {
+			//pass
+		}
+		
+		thrown.expect(ConcurrentModificationException.class);
+		
+		for (Integer i : list) {
+			if (i == 2) {
+				list.append(3);
+			}
+		}
 	}
 }

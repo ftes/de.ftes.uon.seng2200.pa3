@@ -1,12 +1,15 @@
 package de.ftes.uon.seng2200.list.impl;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import de.ftes.uon.seng2200.list.List;
 import de.ftes.uon.seng2200.list.ListEmptyException;
 
 /**
  * A doubly linked list implementation.
+ * 
  * @author Fredrik Teschke
  *
  */
@@ -14,7 +17,8 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 	protected final N start;
 	protected final N end;
 	protected int size = 0;
-	
+	protected int modCount = 0;
+
 	protected BaseList(N start, N end) {
 		this.start = start;
 		this.end = end;
@@ -26,12 +30,14 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 	public void prepend(T o) {
 		start.getNext().insertBefore(o);
 		size++;
+		modCount++;
 	}
 
 	@Override
 	public void append(T o) {
 		end.insertBefore(o);
 		size++;
+		modCount++;
 	}
 
 	/**
@@ -49,14 +55,16 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 		}
 		beforeNode.insertBefore(toInsert);
 		size++;
+		modCount++;
 		return true;
 	}
-	
+
 	@Override
 	public void put(int i, T toInsert) throws IndexOutOfBoundsException {
 		N oldNode = start.getNext().getNthNext(i);
 		oldNode.insertBefore(toInsert);
 		oldNode.remove();
+		modCount++;
 	}
 
 	@Override
@@ -67,6 +75,7 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 		N head = start.getNext();
 		head.remove();
 		size--;
+		modCount++;
 		return head.getData();
 	}
 
@@ -79,7 +88,7 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 	public T getReversed(int i) throws IndexOutOfBoundsException {
 		return end.getPrevious().getNthPrevious(i).getData();
 	}
-	
+
 	@Override
 	public int size() {
 		return size;
@@ -89,6 +98,7 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
 			private N next = BaseList.this.start.getNext();
+			private int expectedModCount = modCount;
 
 			@Override
 			public boolean hasNext() {
@@ -97,13 +107,20 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 
 			@Override
 			public T next() {
+				if (modCount != expectedModCount) {
+					throw new ConcurrentModificationException(
+							"List may not be modified while being iterated over.");
+				} else if (!hasNext()) {
+					throw new NoSuchElementException(
+							"List has no more elements");
+				}
 				T data = next.getData();
 				next = next.getNext();
 				return data;
 			}
 		};
 	}
-	
+
 	@Override
 	public String toString() {
 		String s = "[";

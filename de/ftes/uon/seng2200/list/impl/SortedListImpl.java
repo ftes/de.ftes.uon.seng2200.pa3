@@ -27,6 +27,7 @@ public class SortedListImpl<T extends Comparable<T>> extends
 	public void insertInOrder(T data) {
 		start.getNext().insertInOrder(data);
 		size++;
+		modCount++;
 	}
 	
 	@Override

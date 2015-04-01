@@ -36,12 +36,12 @@ abstract class AbstractSentinelNode<T, N extends BaseNode<T, N>> implements Base
 	}
 	
 	@Override
-	public T getNthNext(int i) {
+	public N getNthNext(int i) {
 		return wrappedNode.getNthNext(i);
 	}
 	
 	@Override
-	public T getNthPrevious(int i) {
+	public N getNthPrevious(int i) {
 		return wrappedNode.getNthPrevious(i);
 	}
 	

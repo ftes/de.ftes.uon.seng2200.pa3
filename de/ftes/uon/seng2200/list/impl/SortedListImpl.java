@@ -20,4 +20,19 @@ public class SortedListImpl<T extends Comparable<T>> extends
 		start.getNext().insertInOrder(data);
 		size++;
 	}
+	
+	@Override
+	public void prepend(T o) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public void append(T o) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public void put(int i, T toInsert) throws IndexOutOfBoundsException {
+		throw new UnsupportedOperationException();	
+	}
 }

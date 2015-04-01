@@ -49,18 +49,18 @@ interface BaseNode<T, N extends BaseNode<T, N>> {
 	void remove();
 
 	/**
-	 * Recursive get operation for getting a data object from a specified index.
-	 * @return the {@link #getData() managed data object} if {@code i == 0}, otherwise call
+	 * Recursive operation for getting a node at a specified index.
+	 * @return {@code this} if {@code i == 0}, otherwise call
 	 *		{@code next.getNthNext(i-1)}
 	 */
-	T getNthNext(int i);
+	N getNthNext(int i);
 	
 	/**
-	 * Recursive get operation for getting a data object from a specified index, counted from the end of the list.
-	 * @return the {@link #getData() managed data object} if {@code i == 0}, otherwise call
+	 * Recursive operation for getting a node at a specified index, counted from the end of the list.
+	 * @return {@code this} if {@code i == 0}, otherwise call
 	 *		{@code next.getNthPrevious(i-1)}
 	 */
-	T getNthPrevious(int i);
+	N getNthPrevious(int i);
 
 	/**
 	 * Factory method.

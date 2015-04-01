@@ -1,3 +1,6 @@
+missing: foul should rank behind attempt yet to be taken (even though foul is recorded as 0)
+
+
 # Written Report
 
 ## 1. Keep track of how much time you spend designing, coding and correcting errors, and how many errors you need to correct.

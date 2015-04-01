@@ -26,7 +26,7 @@ abstract class BaseEndNode<T, N extends BaseNode<T, N>> extends AbstractSentinel
 	}
 	
 	@Override
-	public T getNthNext(int i) {
+	public N getNthNext(int i) {
 		throw new IndexOutOfBoundsException();
 	}
 }

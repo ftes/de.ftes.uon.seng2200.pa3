@@ -9,7 +9,7 @@ import de.ftes.uon.seng2200.list.impl.ListImpl;
 public class ListTest {
 	@Test
 	public void createListThenInsertAndRemoveItems() {
-		List<Integer> list = new ListImpl<Integer>();
+		List<Integer> list = new ListImpl<>();
 		
 		Integer i1 = 1;
 		Integer i2 = 2;
@@ -29,5 +29,14 @@ public class ListTest {
 		Assert.assertEquals(i2, list.pop());
 		Assert.assertEquals(i1, list.pop());
 		Assert.assertEquals(i3, list.pop());
+	}
+	
+	@Test
+	public void putItem() {
+		List<Integer> list = new ListImpl<>();
+		list.append(1);
+		list.append(2);
+		list.put(1, 3);
+		Assert.assertEquals((Integer) 3, list.get(1));
 	}
 }

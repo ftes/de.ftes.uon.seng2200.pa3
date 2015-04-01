@@ -64,17 +64,19 @@ abstract class BaseDataNode<T, N extends BaseNode<T, N>> implements BaseNode<T, 
 		this.setPrevious(toInsert);
 	}
 
-	public T getNthNext(int i) {
+	@SuppressWarnings("unchecked")
+	public N getNthNext(int i) {
 		if (i == 0) {
-			return data;
+			return (N) this;
 		} else {
 			return next.getNthNext(i - 1);
 		}
 	}
 
-	public T getNthPrevious(int i) {
+	@SuppressWarnings("unchecked")
+	public N getNthPrevious(int i) {
 		if (i == 0) {
-			return data;
+			return (N) this;
 		} else {
 			return previous.getNthPrevious(i - 1);
 		}

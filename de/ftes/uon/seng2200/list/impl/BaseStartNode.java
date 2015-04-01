@@ -22,7 +22,7 @@ abstract class BaseStartNode<T, N extends BaseNode<T, N>> extends AbstractSentin
 	}
 	
 	@Override
-	public T getNthPrevious(int i) {
+	public N getNthPrevious(int i) {
 		throw new IndexOutOfBoundsException();
 	}
 }

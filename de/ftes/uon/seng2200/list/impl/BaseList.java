@@ -51,6 +51,13 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 		size++;
 		return true;
 	}
+	
+	@Override
+	public void put(int i, T toInsert) throws IndexOutOfBoundsException {
+		N oldNode = start.getNext().getNthNext(i);
+		oldNode.insertBefore(toInsert);
+		oldNode.remove();
+	}
 
 	@Override
 	public T pop() {
@@ -65,12 +72,12 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 
 	@Override
 	public T get(int i) throws IndexOutOfBoundsException {
-		return start.getNext().getNthNext(i);
+		return start.getNext().getNthNext(i).getData();
 	}
 
 	@Override
 	public T getReversed(int i) throws IndexOutOfBoundsException {
-		return end.getPrevious().getNthPrevious(i);
+		return end.getPrevious().getNthPrevious(i).getData();
 	}
 	
 	@Override

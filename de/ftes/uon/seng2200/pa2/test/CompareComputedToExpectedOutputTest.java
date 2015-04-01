@@ -48,6 +48,6 @@ public class CompareComputedToExpectedOutputTest {
 
 	@Test
 	public void testGivenExample() throws IOException {
-		compareToExpectedFiles("asgn2_Input.txt", "asgn1_output.txt");
+		compareToExpectedFiles("asgn2_Input.txt", "asgn2_Output.txt");
 	}
 }

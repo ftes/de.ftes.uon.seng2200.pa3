@@ -15,7 +15,7 @@ public class StreamUtils {
 			String lineB = inB.readLine();
 
 			while (lineA != null) {
-				if (lineA.compareTo(lineB) != 0) {
+				if (lineB == null || lineA.compareTo(lineB) != 0) {
 					return false;
 				}
 				lineA = inA.readLine();

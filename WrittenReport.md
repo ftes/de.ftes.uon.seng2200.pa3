@@ -1,4 +1,4 @@
-missing: foul should rank behind attempt yet to be taken (even though foul is recorded as 0)
+iterator to detect changes -> ConcurrentModException
 
 
 # Written Report

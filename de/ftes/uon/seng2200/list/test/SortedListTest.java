@@ -3,16 +3,17 @@ package de.ftes.uon.seng2200.list.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.ftes.uon.seng2200.list.SortedList;
 import de.ftes.uon.seng2200.list.impl.SortedListImpl;
 
 public class SortedListTest {
 	@Test
 	public void createListThenInsertAndRemoveItems() {
-		SortedListImpl list = new SortedListImpl();
+		SortedList<Integer> list = new SortedListImpl<>();
 		
-		int i1 = 1;
-		int i2 = 2;
-		int i3 = 3;
+		Integer i1 = 1;
+		Integer i2 = 2;
+		Integer i3 = 3;
 		
 		list.insertInOrder(i3);
 		list.insertInOrder(i1);

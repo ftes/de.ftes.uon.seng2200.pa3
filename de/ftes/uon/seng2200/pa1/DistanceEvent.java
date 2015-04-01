@@ -10,18 +10,18 @@ import de.ftes.uon.seng2200.list.impl.SortedListImpl;
  * @author Fredrik Teschke
  *
  */
-public class DistanceEvent implements Comparable {
+public class DistanceEvent implements Comparable<DistanceEvent> {
 	public static final int NUMBER_OF_ATTEMPTS = 6;
 
 	/**
 	 * 6 attempts, {@code 0} for foul attempt
 	 */
-	private final SortedListImpl sortedDistances = new SortedListImpl();
+	private final SortedListImpl<DistanceAttempt> sortedDistances = new SortedListImpl<>();
 
 	/**
 	 * Redundant list structure (output also needs chronological order).
 	 */
-	private final List distances = new ListImpl();
+	private final List<DistanceAttempt> distances = new ListImpl<>();
 
 	/**
 	 * always 3-letter code
@@ -42,20 +42,14 @@ public class DistanceEvent implements Comparable {
 	 * Get the {@code n}-th best {@link DistanceAttempt} of the athlete.
 	 */
 	public DistanceAttempt getNthBestDistance(int n) {
-		return (DistanceAttempt) sortedDistances.get(n);
+		return sortedDistances.get(n);
 	}
 
 	@Override
 	/**
 	 * Compare the attempts made by two athletes according to spec.
 	 */
-	public int compareTo(Object o) {
-		if (!(o instanceof DistanceEvent)) {
-			throw new ClassCastException("Cannot cast "
-					+ o.getClass().getName() + " to "
-					+ DistanceEvent.class.getName());
-		}
-
+	public int compareTo(DistanceEvent o) {
 		DistanceEvent other = (DistanceEvent) o;
 		
 		//One athlete is ahead of another if his/her best attempt is further than the other athlete’s best attempt.

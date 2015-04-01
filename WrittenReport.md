@@ -25,8 +25,12 @@ After discussion in the blackboard system, I had to revise my understanding of t
 - Coding errors:	3 (60%)
 
 
-## 3. Identify  those  parts  of  the  specification  of  the  compareTo  method  that  are  not required in order to produce correct results for this assignment. Comment on why they may have been included?
+## 3. How much of your code from PA1 have you been able to re-use? Give a class by class percentage estimate.
 
 - _"A  foul  jump  or throw is considered to rank ahead of an attempt that is yet to be made"_
     - We can expect the input to be complete, meaning that we have data for all attempts. Therefore we never have to compare an attempt that has not yet been made to another one.
     - In reality it might be interesting to determine a ranking during the competition, if not all attempts have yet been made (e.g. for live TV commentary). To enable this, the software system would have to handle this situation, for which the specification makes sense.
+    
+## 4. Are you glad of the extra specifications given in the compareTo method for PA1? Explain.
+
+## 5. What do Java generics now give to your program.

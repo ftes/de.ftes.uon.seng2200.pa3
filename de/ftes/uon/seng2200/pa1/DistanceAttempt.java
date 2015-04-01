@@ -6,7 +6,7 @@ package de.ftes.uon.seng2200.pa1;
  * that the athlete achieved this distance on during the competition.
  * @author Fredrik Teschke
  */
-public class DistanceAttempt implements Comparable {
+public class DistanceAttempt implements Comparable<DistanceAttempt> {
 	private final int numberOfAttempt;
 	private final double distance;
 
@@ -28,11 +28,7 @@ public class DistanceAttempt implements Comparable {
 	 * Order a greater distance before a lower one.
 	 * @return {@code -1} if {@code this.distance > o.distance}, 0 if they are equal and 1 otherwise.
 	 */
-	public int compareTo(Object o) {
-		if (!(o instanceof DistanceAttempt)) {
-			throw new ClassCastException("Cannot cast " + o.getClass().getName() + " to " + DistanceAttempt.class.getName());
-		}
-
+	public int compareTo(DistanceAttempt o) {
 		DistanceAttempt other = (DistanceAttempt) o;
 		return - Double.compare(distance, other.distance);
 	}

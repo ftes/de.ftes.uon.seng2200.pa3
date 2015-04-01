@@ -7,6 +7,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import de.ftes.uon.seng2200.list.List;
+import de.ftes.uon.seng2200.list.SortedList;
+import de.ftes.uon.seng2200.list.impl.ListImpl;
+import de.ftes.uon.seng2200.list.impl.SortedListImpl;
+
 /**
  * An event holds all {@link DistaneEvent}s of all athletes for a competition.
  * @author Fredrik Teschke
@@ -18,7 +23,7 @@ public class Event {
 
 	private final String eventName;
 	private final int numberOfAthletes;
-	private final SortedDistanceEventList sortedDistanceEvents;
+	private final SortedList<DistanceEvent> sortedDistanceEvents;
 
 
 	/**
@@ -40,7 +45,7 @@ public class Event {
 		numberOfAthletes = Integer.parseInt(eventAndNumberOfAtheletes[1]);
 
 		//start by constructing the distance event objects
-		DistanceEventList distanceEvents = new DistanceEventList();
+		List<DistanceEvent> distanceEvents = new ListImpl<>();
 
 		for (int i = 0; i < numberOfAthletes; i++) {
 			String[] athleteNameAndCountry = r.readLine().split(
@@ -56,13 +61,13 @@ public class Event {
 		}
 
 		// order the DistanceEvents (can only be done now, as all attempts of the athletes have to be known)
-		sortedDistanceEvents = new SortedDistanceEventList();
+		sortedDistanceEvents = new SortedListImpl<>();
 		for (int i = 0; i < numberOfAthletes; i++) {
 			sortedDistanceEvents.insertInOrder(distanceEvents.pop());
 		}
 	}
 
-	public SortedDistanceEventList getSortedDistanceEvents() {
+	public SortedList<DistanceEvent> getSortedDistanceEvents() {
 		return sortedDistanceEvents;
 	}
 

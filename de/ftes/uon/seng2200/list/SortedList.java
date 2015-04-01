@@ -7,6 +7,6 @@ package de.ftes.uon.seng2200.list;
  * @author Fredrik Teschke
  *
  */
-public interface SortedList extends List {	
-	void insertInOrder(Comparable data);
+public interface SortedList<T extends Comparable<T>> extends List<T> {	
+	void insertInOrder(T data);
 }

@@ -9,11 +9,11 @@ import de.ftes.uon.seng2200.list.impl.ListImpl;
 public class ListTest {
 	@Test
 	public void createListThenInsertAndRemoveItems() {
-		List list = new ListImpl();
+		List<Integer> list = new ListImpl<Integer>();
 		
-		int i1 = 1;
-		int i2 = 2;
-		int i3 = 3;
+		Integer i1 = 1;
+		Integer i2 = 2;
+		Integer i3 = 3;
 		
 		list.prepend(i1);
 		list.append(i3);

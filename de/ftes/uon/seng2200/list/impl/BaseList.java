@@ -103,4 +103,14 @@ abstract class BaseList<T, N extends BaseNode<T, N>> implements List<T> {
 			}
 		};
 	}
+	
+	@Override
+	public String toString() {
+		String s = "[";
+		for (T data : this) {
+			s += data + ", ";
+		}
+		s += "]";
+		return s;
+	}
 }

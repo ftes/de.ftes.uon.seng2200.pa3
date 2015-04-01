@@ -1,5 +1,6 @@
 package de.ftes.uon.seng2200.list.impl;
 
+import de.ftes.uon.seng2200.list.List;
 import de.ftes.uon.seng2200.list.SortedList;
 
 /**
@@ -13,6 +14,13 @@ public class SortedListImpl<T extends Comparable<T>> extends
 		BaseList<T, ComparableNode<T>> implements SortedList<T> {
 	public SortedListImpl() {
 		super(new ComparableStartNodeImpl<T>(), new ComparableEndNodeImpl<T>());
+	}
+	
+	public SortedListImpl(List<T> fromList) {
+		this();
+		for (T data : fromList) {
+			insertInOrder(data);
+		}
 	}
 
 	@Override

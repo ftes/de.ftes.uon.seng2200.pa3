@@ -2,7 +2,7 @@
 
 import java.io.IOException;
 
-import de.ftes.uon.seng2200.pa1.Event;
+import de.ftes.uon.seng2200.pa2.Event;
 
 /**
  * Course		SENG6220
@@ -15,7 +15,6 @@ public class PA2 {
 	 * and print the result list to standard output.
 	 */
 	public static void main(String[] args) throws IOException {
-		Event e = new Event(System.in);
-		e.print(System.out);
+		new Event(System.in, System.out);
 	}
 }

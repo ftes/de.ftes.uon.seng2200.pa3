@@ -1,4 +1,4 @@
-package de.ftes.uon.seng2200.pa1.test;
+package de.ftes.uon.seng2200.pa2.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -8,7 +8,7 @@ import java.io.InputStream;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.ftes.uon.seng2200.pa1.Event;
+import de.ftes.uon.seng2200.pa2.Event;
 import de.ftes.uon.seng2200.test.utils.StreamUtils;
 
 public class CompareComputedToExpectedOutputTest {
@@ -16,7 +16,7 @@ public class CompareComputedToExpectedOutputTest {
 			InputStream expectedOutputInputStream) throws IOException {
 		ByteArrayOutputStream computedOut = new ByteArrayOutputStream();
 
-		new Event(inputStream).print(computedOut);
+		new Event(inputStream, computedOut);
 		byte[] computedBytes = computedOut.toByteArray();
 		computedOut.close();
 
@@ -48,6 +48,6 @@ public class CompareComputedToExpectedOutputTest {
 
 	@Test
 	public void testGivenExample() throws IOException {
-		compareToExpectedFiles("asgn1_input.txt", "asgn1_output.txt");
+		compareToExpectedFiles("asgn2_Input.txt", "asgn1_output.txt");
 	}
 }

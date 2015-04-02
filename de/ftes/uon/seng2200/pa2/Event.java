@@ -7,9 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import de.ftes.uon.seng2200.list.ArrayList;
 import de.ftes.uon.seng2200.list.List;
 import de.ftes.uon.seng2200.list.SortedList;
-import de.ftes.uon.seng2200.list.impl.ListImpl;
+import de.ftes.uon.seng2200.list.impl.ArrayListImpl;
 import de.ftes.uon.seng2200.list.impl.SortedListImpl;
 
 /**
@@ -27,7 +28,7 @@ public class Event {
 	@SuppressWarnings("unused")
 	private final String eventName;
 	private final int numberOfAthletes;
-	private final List<DistanceEvent> distanceEvents;
+	private final ArrayList<DistanceEvent> distanceEvents;
 
 	/**
 	 * Parse the input according to spec, using a default number of
@@ -53,7 +54,7 @@ public class Event {
 		numberOfAthletes = Integer.parseInt(eventAndNumberOfAtheletes[1]);
 
 		// start by constructing the distance event objects
-		distanceEvents = new ListImpl<>();
+		distanceEvents = new ArrayListImpl<>();
 
 		for (int i = 0; i < numberOfAthletes; i++) {
 			String[] athleteNameAndCountry = r.readLine().split(

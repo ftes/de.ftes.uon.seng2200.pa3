@@ -1,8 +1,8 @@
 package de.ftes.uon.seng2200.pa2;
 
-import de.ftes.uon.seng2200.list.List;
+import de.ftes.uon.seng2200.list.ArrayList;
 import de.ftes.uon.seng2200.list.SortedList;
-import de.ftes.uon.seng2200.list.impl.ListImpl;
+import de.ftes.uon.seng2200.list.impl.ArrayListImpl;
 import de.ftes.uon.seng2200.list.impl.SortedListImpl;
 
 /**
@@ -16,7 +16,7 @@ public class DistanceEvent implements Comparable<DistanceEvent> {
 	/**
 	 * Redundant list structure (output also needs chronological order).
 	 */
-	private final List<DistanceAttempt> distances = new ListImpl<>();
+	private final ArrayList<DistanceAttempt> distances = new ArrayListImpl<>();
 
 	/**
 	 * always 3-letter code

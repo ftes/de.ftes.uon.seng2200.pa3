@@ -7,13 +7,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import de.ftes.uon.seng2200.list.List;
-import de.ftes.uon.seng2200.list.impl.ListImpl;
+import de.ftes.uon.seng2200.list.ArrayList;
+import de.ftes.uon.seng2200.list.impl.ArrayListImpl;
 
 public class ListTest {
 	@Test
 	public void createListThenInsertAndRemoveItems() {
-		List<Integer> list = new ListImpl<>();
+		ArrayList<Integer> list = new ArrayListImpl<>();
 		
 		Integer i1 = 1;
 		Integer i2 = 2;
@@ -37,7 +37,7 @@ public class ListTest {
 	
 	@Test
 	public void putItem() {
-		List<Integer> list = new ListImpl<>();
+		ArrayList<Integer> list = new ArrayListImpl<>();
 		list.append(1);
 		list.append(2);
 		list.put(1, 3);
@@ -49,7 +49,7 @@ public class ListTest {
 	
 	@Test
 	public void testIterator() {
-		List<Integer> list = new ListImpl<>();
+		ArrayList<Integer> list = new ArrayListImpl<>();
 		list.append(1);
 		list.append(2);
 		list.append(3);

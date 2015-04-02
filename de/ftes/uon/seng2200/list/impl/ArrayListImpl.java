@@ -4,7 +4,7 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import de.ftes.uon.seng2200.list.List;
+import de.ftes.uon.seng2200.list.ArrayList;
 import de.ftes.uon.seng2200.list.ListEmptyException;
 import de.ftes.uon.seng2200.list.ListException;
 
@@ -14,7 +14,7 @@ import de.ftes.uon.seng2200.list.ListException;
  * @author Fredrik Teschke
  *
  */
-public class ListImpl<T> implements List<T> {
+public class ArrayListImpl<T> implements ArrayList<T> {
 	/**
 	 * A node in a doubly linked list.
 	 * @author Fredrik Teschke
@@ -76,11 +76,6 @@ public class ListImpl<T> implements List<T> {
 		 *		{@code next.getNthPrevious(i-1)}
 		 */
 		Node<T> getNthPrevious(int i);
-		
-		/**
-		 * Recursive insert in order, if the data is {@link Comparable}.
-		 */
-		void insertInOrder(T toInsert);
 	}
 	
 	/**
@@ -160,20 +155,6 @@ public class ListImpl<T> implements List<T> {
 				return previous.getNthPrevious(i - 1);
 			}
 		}
-
-		@Override
-		public void insertInOrder(T toInsert) {
-			if (! (getData() instanceof Comparable<?>)) {
-				throw new ListException("Can only insert comparable data items in order");
-			}
-			@SuppressWarnings("unchecked")
-			Comparable<T> comp = (Comparable<T>) getData();
-			if (comp.compareTo(toInsert) < 0) {
-				getNext().insertInOrder(toInsert);
-			} else {
-				insertBefore(toInsert);
-			}
-		}
 	}
 	
 	/**
@@ -246,24 +227,15 @@ public class ListImpl<T> implements List<T> {
 		public Node<T> getNthNext(int i) {
 			throw new IndexOutOfBoundsException();
 		}
-		
-		@Override
-		/**
-		 * If {@code toInsert} was not yet inserted, it has to go at the end of the list,
-		 * so before this sentinel node.
-		 */
-		public void insertInOrder(T toInsert) {
-			insertBefore(toInsert);
-		}
 	}
 
 	
-	protected final Node<T> start = new StartNodeImpl();
-	protected final Node<T> end = new EndNodeImpl();
-	protected int size = 0;
-	protected int modCount = 0;
+	private final Node<T> start = new StartNodeImpl();
+	private final Node<T> end = new EndNodeImpl();
+	private int size = 0;
+	private int modCount = 0;
 
-	public ListImpl() {
+	public ArrayListImpl() {
 		end.setPrevious(start);
 		start.setNext(end);
 	}
@@ -339,12 +311,12 @@ public class ListImpl<T> implements List<T> {
 	@Override
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
-			private Node<T> next = ListImpl.this.start.getNext();
+			private Node<T> next = ArrayListImpl.this.start.getNext();
 			private int expectedModCount = modCount;
 
 			@Override
 			public boolean hasNext() {
-				return !(next instanceof ListImpl.EndNodeImpl);
+				return !(next instanceof ArrayListImpl.EndNodeImpl);
 			}
 
 			@Override

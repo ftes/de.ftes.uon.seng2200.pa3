@@ -11,15 +11,15 @@ I spent two hours coding. The first hour was spent refactoring the List-related 
 ### Time spent correcting errors
 As I coded using Eclipse, it is difficult to say how much time I spent "correcting errors", as immediate syntax and semantic checks highlight potential problems while coding, some of which I might have noticed by myself, others not.
 
-I did not have any significant semantic errors.
+I made a design error by trying to create a Node-hierarchy. This Node-hierarchy included ComparableNodes, that forced the data-type to implement ``Comparable<T>``. This allowed me to implement ``insertInOrder()`` recursively. However, it prevented the ``Node`` types from being private inner types, as both ``ArrayList`` and ``SortedList`` needed access to the base interface. I spent 25 minutes flattening that hierarchy and relocating them as private inner types.
 
 ### How many errors I had to correct
-0 (see explanation above - syntax errors not considered)
+1 (see explanation above - syntax errors not considered)
 
 
 ## 2. Keep  a  log  of what  proportion  of  your errors come from  design  errors and  what proportion from coding/implementation errors.
 
-- Design errors:	0
+- Design errors:	1 (100%)
 - Coding errors:	0
 
 
@@ -30,12 +30,11 @@ Apart from refactoring to use generics (change type and method signatures), all 
 Class by class estimate:
 
 - List types
-    - BaseList (previously ListImpl): 100%
-    - BaseNode (previously NodeImpl): 100%
-    - BaseDataNode (previously DataNodeImpl): 100%
-    - BaseEndNode (previously EndNodeImpl): 100%
-    - BaseStartNode (previously StartNodeImpl): 100%
-    - ComparableDataNodeImpl: 100%
+    - ArrayListImpl (previously ListImpl): 100%
+    - Node (previously NodeImpl): 100%
+    - DataNodeImpl (previously DataNodeImpl): 100%
+    - EndNodeImpl (previously EndNodeImpl): 100%
+    - StartNodeImpl (previously StartNodeImpl): 100%
     - AbstractSentinelNode (previously SentinelNodeImpl): 100%
     - SortedListImpl: 100%
 - Domain specific types
@@ -45,7 +44,7 @@ Class by class estimate:
     
 ## 4. Are you glad of the extra specifications given in the compareTo method for PA1? Explain.
 
-Yes. I used Double.MIN_VALUE (smallest positive value) as a special value for an attempt not made (in addition to a boolean flag), so that a simple double comparison now is sufficient to bring DistanceAttempts in the correct order.
+Yes. I used ``Double#MIN_VALUE`` (smallest positive value) as a special value for an attempt not made (in addition to a boolean flag), so that a simple double comparison now is sufficient to bring DistanceAttempts in the correct order.
 
 ## 5. What do Java generics now give to your program.
 

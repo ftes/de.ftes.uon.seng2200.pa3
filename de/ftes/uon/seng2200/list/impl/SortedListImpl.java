@@ -10,14 +10,13 @@ import de.ftes.uon.seng2200.list.SortedList;
  * @author Fredrik Teschke
  *
  */
-public class SortedListImpl<T extends Comparable<T>> extends
-		BaseList<T, ComparableNode<T>> implements SortedList<T> {
+public class SortedListImpl<T extends Comparable<T>> extends ListImpl<T>
+		implements SortedList<T> {
 	public SortedListImpl() {
-		super(new ComparableStartNodeImpl<T>(), new ComparableEndNodeImpl<T>());
+		super();
 	}
 	
 	public SortedListImpl(List<T> fromList) {
-		this();
 		for (T data : fromList) {
 			insertInOrder(data);
 		}
@@ -29,19 +28,19 @@ public class SortedListImpl<T extends Comparable<T>> extends
 		size++;
 		modCount++;
 	}
-	
+
 	@Override
 	public void prepend(T o) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	@Override
 	public void append(T o) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	@Override
 	public void put(int i, T toInsert) throws IndexOutOfBoundsException {
-		throw new UnsupportedOperationException();	
+		throw new UnsupportedOperationException();
 	}
 }

@@ -11,7 +11,7 @@ import de.ftes.uon.seng2200.list.ListException;
 /**
  * A doubly linked list implementation.
  * 
- * @author Fredrik Teschke
+ * @author Fredrik Teschke (3228760)
  *
  */
 public class ArrayListImpl<T> implements ArrayList<T> {

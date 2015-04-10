@@ -6,6 +6,11 @@ import org.junit.Test;
 import de.ftes.uon.seng2200.list.SortedList;
 import de.ftes.uon.seng2200.list.impl.SortedListImpl;
 
+/**
+ * 
+ * @author Fredrik Teschke (3228760)
+ *
+ */
 public class SortedListTest {
 	@Test
 	public void createListThenInsertAndRemoveItems() {

@@ -9,7 +9,7 @@ import de.ftes.uon.seng2200.list.impl.SortedListImpl;
  * A distance event holds all the attempts made by an athlete during a
  * competition along with some basic data about that athlete.
  * 
- * @author Fredrik Teschke
+ * @author Fredrik Teschke (3228760)
  *
  */
 public class DistanceEvent implements Comparable<DistanceEvent> {

@@ -9,7 +9,7 @@ package de.ftes.uon.seng2200.pa2;
  * A foul attempt is encoded as distance of {@code 0}, an attempt not yet made
  * is encoded as {@link Double#MIN_VALUE}.
  * 
- * @author Fredrik Teschke
+ * @author Fredrik Teschke (3228760)
  */
 public class DistanceAttempt implements Comparable<DistanceAttempt> {
 	private final boolean hasBeenMade;

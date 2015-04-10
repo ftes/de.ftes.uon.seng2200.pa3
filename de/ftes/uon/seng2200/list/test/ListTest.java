@@ -10,6 +10,11 @@ import org.junit.rules.ExpectedException;
 import de.ftes.uon.seng2200.list.ArrayList;
 import de.ftes.uon.seng2200.list.impl.ArrayListImpl;
 
+/**
+ * 
+ * @author Fredrik Teschke (3228760)
+ *
+ */
 public class ListTest {
 	@Test
 	public void createListThenInsertAndRemoveItems() {

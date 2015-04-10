@@ -16,7 +16,7 @@ import de.ftes.uon.seng2200.list.impl.SortedListImpl;
 /**
  * An event holds all {@link DistaneEvent}s of all athletes for a competition.
  * 
- * @author Fredrik Teschke
+ * @author Fredrik Teschke (3228760)
  *
  */
 public class Event {

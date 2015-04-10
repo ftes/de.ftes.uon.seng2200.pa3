@@ -1,17 +1,12 @@
 package de.ftes.uon.seng2200.pa2;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-
-import de.ftes.uon.seng2200.list.ArrayList;
-import de.ftes.uon.seng2200.list.List;
-import de.ftes.uon.seng2200.list.SortedList;
-import de.ftes.uon.seng2200.list.impl.ArrayListImpl;
-import de.ftes.uon.seng2200.list.impl.SortedListImpl;
 
 /**
  * An event holds all {@link DistaneEvent}s of all athletes for a competition.

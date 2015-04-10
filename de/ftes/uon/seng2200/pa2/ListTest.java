@@ -1,4 +1,5 @@
-package de.ftes.uon.seng2200.list.test;
+package de.ftes.uon.seng2200.pa2;
+
 
 import java.util.ConcurrentModificationException;
 
@@ -6,9 +7,6 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import de.ftes.uon.seng2200.list.ArrayList;
-import de.ftes.uon.seng2200.list.impl.ArrayListImpl;
 
 /**
  * 

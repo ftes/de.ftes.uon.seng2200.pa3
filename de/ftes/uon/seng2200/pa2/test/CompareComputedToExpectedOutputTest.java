@@ -9,7 +9,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import de.ftes.uon.seng2200.pa2.Event;
-import de.ftes.uon.seng2200.test.utils.StreamUtils;
 
 public class CompareComputedToExpectedOutputTest {
 	private void compareToExpected(InputStream inputStream,

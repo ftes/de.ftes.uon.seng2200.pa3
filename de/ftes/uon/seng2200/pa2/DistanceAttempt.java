@@ -1,5 +1,6 @@
 package de.ftes.uon.seng2200.pa2;
 
+
 /**
  * A distance attempt wraps a distance achieved by an athlete in a competition.
  * Apart from the {@link #distance} value, it holds the {@link #numberOfAttempt

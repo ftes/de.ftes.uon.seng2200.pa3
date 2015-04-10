@@ -1,9 +1,6 @@
 package de.ftes.uon.seng2200.pa2;
 
-import de.ftes.uon.seng2200.list.ArrayList;
-import de.ftes.uon.seng2200.list.SortedList;
-import de.ftes.uon.seng2200.list.impl.ArrayListImpl;
-import de.ftes.uon.seng2200.list.impl.SortedListImpl;
+
 
 /**
  * A distance event holds all the attempts made by an athlete during a

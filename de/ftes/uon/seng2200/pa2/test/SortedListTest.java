@@ -1,10 +1,11 @@
-package de.ftes.uon.seng2200.list.test;
+package de.ftes.uon.seng2200.pa2.test;
+
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.ftes.uon.seng2200.list.SortedList;
-import de.ftes.uon.seng2200.list.impl.SortedListImpl;
+import de.ftes.uon.seng2200.pa2.SortedList;
+import de.ftes.uon.seng2200.pa2.SortedListImpl;
 
 /**
  * 

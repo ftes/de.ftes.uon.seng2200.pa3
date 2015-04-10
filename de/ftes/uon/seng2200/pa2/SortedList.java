@@ -1,4 +1,5 @@
-package de.ftes.uon.seng2200.list;
+package de.ftes.uon.seng2200.pa2;
+
 
 /**
  * A list that sorts elements upon insertion using their {@link Comparable#compareTo} method.

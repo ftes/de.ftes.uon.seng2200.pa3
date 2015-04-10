@@ -1,7 +1,6 @@
-package de.ftes.uon.seng2200.list.impl;
+package de.ftes.uon.seng2200.pa2;
 
-import de.ftes.uon.seng2200.list.List;
-import de.ftes.uon.seng2200.list.SortedList;
+
 
 /**
  * A sorted list that defers all sorting functionality to its

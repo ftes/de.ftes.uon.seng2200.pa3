@@ -1,12 +1,9 @@
-package de.ftes.uon.seng2200.list.impl;
+package de.ftes.uon.seng2200.pa2;
+
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
-import de.ftes.uon.seng2200.list.ArrayList;
-import de.ftes.uon.seng2200.list.ListEmptyException;
-import de.ftes.uon.seng2200.list.ListException;
 
 /**
  * A doubly linked list implementation.

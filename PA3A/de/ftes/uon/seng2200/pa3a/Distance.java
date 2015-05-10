@@ -2,60 +2,124 @@ package de.ftes.uon.seng2200.pa3a;
 
 
 
+
 /**
- * Wraps a distance achieved by an athlete in a competition.
- * 
- * A foul attempt is encoded as distance of {@code 0}, an attempt not yet made
- * is encoded as {@link Double#MIN_VALUE}.
+ * Holds all the attempts made by an athlete during a
+ * competition along with some basic data about that athlete.
  * 
  * @author Fredrik Teschke (3228760)
+ *
  */
-public class Distance extends Event<Distance> implements Comparable<Distance> {
-	private float distance;
-
-	public Distance(String athleteName, String country, int numberOfAttempt) {
-		super(athleteName, country, numberOfAttempt);
-		this.distance = Float.MIN_VALUE;
-	}
-
-	public Distance(String athleteName, String country, int numberOfAttempt, float distance) {
-		super(athleteName, country, numberOfAttempt);
-		setData(distance);
-	}
+public class Distance extends Event<Distance> {
+	private int numberOfAttemptsReceived = 0;
 	
-	@Override
-	public void setData(float value) {
-		this.hasBeenMade = true;
-		this.distance = value;
+	/**
+	 * Redundant list structure (output also needs chronological order).
+	 */
+	private final ArrayList<DistanceAttempt> distances = new ArrayListImpl<>();
+
+	/**
+	 * always 3-letter code
+	 */
+	private final String country;
+
+	private final String athleteName;
+
+	/**
+	 * at what index in input file athlete appears
+	 */
+	private final int index;
+
+	public Distance(String athleteName, String country, int index,
+			int numberOfAttempts) {
+		super(athleteName, country);
+		this.athleteName = athleteName;
+		this.country = country;
+		this.index = index;
+
+		for (int i = 0; i < numberOfAttempts; i++) {
+			distances.append(new DistanceAttempt(i));
+		}
 	}
-	
-	@Override
-	public boolean isFoul() {
-		return distance == 0;
+
+	public SortedList<DistanceAttempt> getSortedDistances() {
+		return new SortedListImpl<>(distances);
+	}
+
+	/**
+	 * Get the {@code n}-th best {@link DistanceAttempt} of the athlete.
+	 */
+	public DistanceAttempt getNthBestEvent(int n) {
+		return getSortedDistances().get(n);
 	}
 
 	@Override
 	/**
-	 * Order a greater distance before a lower one. An attempt not yet made is ordered before a foul attempt.
-	 * @return {@code -1} if {@code this.distance > o.distance}, 0 if they are equal and 1 otherwise.
+	 * Compare the attempts made by two athletes according to spec.
 	 */
 	public int compareTo(Distance other) {
-		return -Double.compare(distance, other.distance);
+		// One athlete is ahead of another if his/her best attempt is further
+		// than the other athlete’s best attempt.
+		// If these are equal, then their second-best attempts are compared, and
+		// if these are equal then their third-best
+		// attempts, etc.
+		for (int i = 0; i < distances.size(); i++) {
+			int comparison = getNthBestEvent(i).compareTo(
+					other.getNthBestEvent(i));
+			if (comparison != 0) {
+				return comparison;
+			}
+		}
+
+		// If the two athletes are still considered equal then it is the athlete
+		// who made a particular distance earlier in the competition that takes
+		// precedence.
+		for (int i = 0; i < distances.size(); i++) {
+			int comparison = Integer.compare(getNthBestEvent(i)
+					.getNumberOfAttempt(), other.getNthBestEvent(i)
+					.getNumberOfAttempt());
+			if (comparison != 0) {
+				return comparison;
+			}
+		}
+
+		// if two athletes are still equal after all checking has been made then
+		// the athlete whose name is entered
+		// first in the data file takes precedence.
+		return Integer.compare(index, other.index);
 	}
-	
+
+	/**
+	 * Add a distance to the list of attempts.
+	 * 
+	 * @param distance
+	 */
 	@Override
-	public boolean lessThan(Event<Distance> other) {
-		return compareTo((Distance) other) < 0;
+	public void setData(float distance) {
+		int numberOfAttempt = numberOfAttemptsReceived++;
+		DistanceAttempt distanceAttempt = new DistanceAttempt(numberOfAttempt, distance);
+		distances.put(numberOfAttempt, distanceAttempt);
 	}
 
 	@Override
+	/**
+	 * Formatted according to the spec.
+	 */
 	public String toString() {
-		if (! hasBeenMade) {
-			return "   U   ";
-		} else if (isFoul()) {
-			return "   X   ";
-		} else {
-			return String.format("%7.2f", distance);
+		String distancesString = "";
+		for (DistanceAttempt d : distances) {
+			distancesString += d;
 		}
+		return String.format("%-15.15s %s%s", athleteName, country,
+				distancesString);
+	}
+
+	public String getAthleteName() {
+		return athleteName;
+	}
+
+	@Override
+	public boolean lessThan(Event<Distance> other) {
+		return compareTo((Distance) other) < 0;
 	}
 }

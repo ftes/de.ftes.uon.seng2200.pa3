@@ -1,9 +1,9 @@
-package de.ftes.uon.seng2200.pa3a.test;
+package de.ftes.uon.seng2200.pa3b.test;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.ftes.uon.seng2200.pa3a.Distance;
+import de.ftes.uon.seng2200.pa3b.Distance;
 
 public class DistanceAttemptTest {
 	@Test

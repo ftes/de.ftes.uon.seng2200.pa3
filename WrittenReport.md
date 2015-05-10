@@ -1,5 +1,11 @@
 # Written Report
 
+start 12:55
+don't need athlete/country fields on event
+
+deviated slightly from factory method: have EventCollection interface, which deals with instantiating events
+instead factory method for EventCollection
+
 ## 1. Keep track of how much time you spend designing, coding and correcting errors, and how many errors you need to correct.
 
 ### Time spent designing

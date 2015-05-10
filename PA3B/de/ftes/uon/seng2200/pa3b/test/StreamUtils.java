@@ -1,4 +1,4 @@
-package de.ftes.uon.seng2200.pa3a.test;
+package de.ftes.uon.seng2200.pa3b.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;

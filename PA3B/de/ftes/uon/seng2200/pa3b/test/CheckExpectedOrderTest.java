@@ -1,4 +1,4 @@
-package de.ftes.uon.seng2200.pa3a.test;
+package de.ftes.uon.seng2200.pa3b.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.ftes.uon.seng2200.pa3a.EventParser;
+import de.ftes.uon.seng2200.pa3b.EventParser;
 
 public class CheckExpectedOrderTest {
 

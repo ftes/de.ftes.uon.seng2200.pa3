@@ -10,20 +10,13 @@ package de.ftes.uon.seng2200.pa3a;
  * @author Fredrik Teschke (3228760)
  *
  */
-public class Distance extends Event<Distance> {
+public class Distance extends Event<Distance> implements Comparable<Distance> {
 	private int numberOfAttemptsReceived = 0;
 	
 	/**
 	 * Redundant list structure (output also needs chronological order).
 	 */
 	private final ArrayList<DistanceAttempt> distances = new ArrayListImpl<>();
-
-	/**
-	 * always 3-letter code
-	 */
-	private final String country;
-
-	private final String athleteName;
 
 	/**
 	 * at what index in input file athlete appears
@@ -33,8 +26,6 @@ public class Distance extends Event<Distance> {
 	public Distance(String athleteName, String country, int index,
 			int numberOfAttempts) {
 		super(athleteName, country);
-		this.athleteName = athleteName;
-		this.country = country;
 		this.index = index;
 
 		for (int i = 0; i < numberOfAttempts; i++) {
@@ -49,7 +40,7 @@ public class Distance extends Event<Distance> {
 	/**
 	 * Get the {@code n}-th best {@link DistanceAttempt} of the athlete.
 	 */
-	public DistanceAttempt getNthBestEvent(int n) {
+	public DistanceAttempt getNthBestAttempt(int n) {
 		return getSortedDistances().get(n);
 	}
 
@@ -64,8 +55,8 @@ public class Distance extends Event<Distance> {
 		// if these are equal then their third-best
 		// attempts, etc.
 		for (int i = 0; i < distances.size(); i++) {
-			int comparison = getNthBestEvent(i).compareTo(
-					other.getNthBestEvent(i));
+			int comparison = getNthBestAttempt(i).compareTo(
+					other.getNthBestAttempt(i));
 			if (comparison != 0) {
 				return comparison;
 			}
@@ -75,8 +66,8 @@ public class Distance extends Event<Distance> {
 		// who made a particular distance earlier in the competition that takes
 		// precedence.
 		for (int i = 0; i < distances.size(); i++) {
-			int comparison = Integer.compare(getNthBestEvent(i)
-					.getNumberOfAttempt(), other.getNthBestEvent(i)
+			int comparison = Integer.compare(getNthBestAttempt(i)
+					.getNumberOfAttempt(), other.getNthBestAttempt(i)
 					.getNumberOfAttempt());
 			if (comparison != 0) {
 				return comparison;
@@ -119,7 +110,7 @@ public class Distance extends Event<Distance> {
 	}
 
 	@Override
-	public boolean lessThan(Event<Distance> other) {
-		return compareTo((Distance) other) < 0;
+	public boolean lessThan(Distance other) {
+		return compareTo(other) < 0;
 	}
 }

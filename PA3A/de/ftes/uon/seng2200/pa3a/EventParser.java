@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
 /**
@@ -15,25 +16,17 @@ import java.util.Iterator;
  * @author Fredrik Teschke (3228760)
  *
  */
-public class EventParser<T extends Event<T>>
-		implements Iterable<T> {
+public class EventParser<T extends Event<T>> implements Iterable<T> {
 	private static final String COMMA_AND_WHITESPACE_REGEX = ",\\s*";
 	private static final String[] MEDALS = { "GOLD", "SILVER", "BRONZE" };
 
 	private final ArrayList<T> events;
+	private final Class<T> eventClass;
+	private final int numberOfAttempts;
 
 	public static EventParser<?> parse(InputStream in, OutputStream out)
 			throws IOException {
 		return parse(in, out, null);
-	}
-
-	private static int getNumberOfAttempts(Integer customNumber,
-			int standardNumber) {
-		return customNumber != null ? customNumber : standardNumber;
-	}
-
-	private interface EventCollectionFactory<T extends Event<T>> {
-		T create(String athleteName, String country, int index);
 	}
 
 	public static EventParser<?> parse(InputStream in, OutputStream out,
@@ -45,16 +38,10 @@ public class EventParser<T extends Event<T>>
 		int numberOfAthletes = Integer.parseInt(eventAndNumberOfAtheletes[1]);
 		switch (eventName) {
 		case "Hammer Throw":
-			return new EventParser<Distance>(
-					new EventCollectionFactory<Distance>() {
-						@Override
-						public Distance create(String athleteName,
-								String country, int index) {
-							return new Distance(athleteName, country,
-									index, getNumberOfAttempts(
-											customNumberOfAttempts, 6));
-						}
-					}, eventName, numberOfAthletes, r, out);
+		case "Javelin":
+			return new EventParser<Distance>(Distance.class, eventName,
+					numberOfAthletes, r, out,
+					customNumberOfAttempts == null ? 6 : customNumberOfAttempts);
 		default:
 			throw new InvalidEventNameException("Event " + eventName
 					+ " is not supported");
@@ -67,9 +54,11 @@ public class EventParser<T extends Event<T>>
 	 * 
 	 * @throws IOException
 	 */
-	private EventParser(EventCollectionFactory<T> factory, String eventName,
-			int numberOfAthletes, BufferedReader r, OutputStream out)
-			throws IOException {
+	private EventParser(Class<T> eventClass, String eventName,
+			int numberOfAthletes, BufferedReader r, OutputStream out,
+			int numberOfAttempts) throws IOException {
+		this.eventClass = eventClass;
+		this.numberOfAttempts = numberOfAttempts;
 		PrintWriter w = null;
 		if (out != null) {
 			w = new PrintWriter(out);
@@ -82,7 +71,7 @@ public class EventParser<T extends Event<T>>
 			String[] athleteNameAndCountry = r.readLine().split(
 					COMMA_AND_WHITESPACE_REGEX);
 
-			T event = factory.create(athleteNameAndCountry[0],
+			T event = createEvent(athleteNameAndCountry[0],
 					athleteNameAndCountry[1], i);
 			events.append(event);
 		}
@@ -129,8 +118,7 @@ public class EventParser<T extends Event<T>>
 
 		w.println(heading);
 		// p.println(eventName);
-		List<T> listToUse = ranked ? getSortedEvents()
-				: events;
+		List<T> listToUse = ranked ? getSortedEvents() : events;
 		int i = 0;
 		for (T d : listToUse) {
 			String optionalMedal = withMedals ? (i < MEDALS.length ? " "
@@ -143,5 +131,23 @@ public class EventParser<T extends Event<T>>
 	@Override
 	public Iterator<T> iterator() {
 		return getSortedEvents().iterator();
+	}
+
+	private T createEvent(String athleteName, String country, int index) {
+		try {
+			return eventClass.getConstructor(String.class, String.class,
+					int.class, int.class).newInstance(athleteName, country,
+					index, numberOfAttempts);
+		} catch (NoSuchMethodException e) {
+			throw new RuntimeException(
+					"Create a constructor with parameters athleteName, country, index, numberOfAttempts for "
+							+ eventClass.getName());
+		} catch (SecurityException | InstantiationException
+				| IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			// should not occur
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

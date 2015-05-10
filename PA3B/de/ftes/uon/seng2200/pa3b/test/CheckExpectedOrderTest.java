@@ -26,10 +26,10 @@ public class CheckExpectedOrderTest {
 		return s;
 	}
 
-	private static void checkOrder(EventParser<?, ?> event, String[] expectedAthleteOrder) {
+	private static void checkOrder(EventParser<?> event, String[] expectedAthleteOrder) {
 		for (int i = 0; i < expectedAthleteOrder.length; i++) {
 			Assert.assertEquals(expectedAthleteOrder[i],
-					event.getSortedDistanceEvents().get(i).getAthleteName());
+					event.getSortedEvents().get(i).getAthleteName());
 		}
 	}
 
@@ -41,7 +41,7 @@ public class CheckExpectedOrderTest {
 			athletesWithCountries[i] = athletes[i] + ",GER";
 		}
 		String input = constructInput("Hammer Throw", athletesWithCountries, attempts);
-		EventParser<?, ?> event = EventParser.parse(new ByteArrayInputStream(input.getBytes()), null, attempts[0].length);
+		EventParser<?> event = EventParser.parse(new ByteArrayInputStream(input.getBytes()), null, attempts[0].length);
 		checkOrder(event, expectedAthleteOrder);
 	}
 
@@ -53,8 +53,8 @@ public class CheckExpectedOrderTest {
 			athletesWithCountries[i] = athletes[i] + ",GER";
 		}
 		String input = constructInput("Hammer Throw", athletesWithCountries, attempts);
-		EventParser<?, ?> event = EventParser.parse(new ByteArrayInputStream(input.getBytes()), null,attempts[0].length);
-		Assert.assertEquals(winner, event.getSortedDistanceEvents().get(0).getAthleteName());
+		EventParser<?> event = EventParser.parse(new ByteArrayInputStream(input.getBytes()), null,attempts[0].length);
+		Assert.assertEquals(winner, event.getSortedEvents().get(0).getAthleteName());
 	}
 
 	@Test

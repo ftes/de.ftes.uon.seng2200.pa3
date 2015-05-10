@@ -9,6 +9,6 @@ package de.ftes.uon.seng2200.pa3b;
  * @author Fredrik Teschke (3228760)
  *
  */
-public interface SortedList<T extends Comparable<?>> extends List<T> {	
+public interface SortedList<T extends LessThanComparable<T>> extends List<T> {	
 	void insertInOrder(T data);
 }

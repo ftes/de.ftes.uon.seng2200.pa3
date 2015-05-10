@@ -1,0 +1,22 @@
+Womens 1000m Time Trial, 10
+Kristian Harold,ARM
+Vinzenz Linas,BDI
+Apostolos Aryeh,ESA
+Leofwine Yaron,GRE
+Valentin Michael,KAZ
+Djordje Osborne,LBA
+Eser Cecilio,MYA
+Olavo Bruno,PAK
+Erle Caratacus,KSA
+Hilary Akamu,GBR
+65.40829596613935
+51.4510571146066
+0
+59.184954422075975
+65.88782541429404
+53.37054214310881
+0
+60.83640164272022
+67.7342725889695
+rank
+65.82330621202783

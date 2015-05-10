@@ -4,6 +4,7 @@ package de.ftes.uon.seng2200.pa3a.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.ftes.uon.seng2200.pa3a.DistanceAttempt;
 import de.ftes.uon.seng2200.pa3a.SortedList;
 import de.ftes.uon.seng2200.pa3a.SortedListImpl;
 
@@ -15,11 +16,11 @@ import de.ftes.uon.seng2200.pa3a.SortedListImpl;
 public class SortedListTest {
 	@Test
 	public void createListThenInsertAndRemoveItems() {
-		SortedList<Integer> list = new SortedListImpl<>();
+		SortedList<DistanceAttempt> list = new SortedListImpl<>();
 		
-		Integer i1 = 1;
-		Integer i2 = 2;
-		Integer i3 = 3;
+		DistanceAttempt i1 = new DistanceAttempt(1, 3);
+		DistanceAttempt i2 = new DistanceAttempt(2, 2);
+		DistanceAttempt i3 = new DistanceAttempt(3, 1);
 		
 		list.insertInOrder(i3);
 		list.insertInOrder(i1);

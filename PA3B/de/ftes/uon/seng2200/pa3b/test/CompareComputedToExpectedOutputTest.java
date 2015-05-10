@@ -49,4 +49,9 @@ public class CompareComputedToExpectedOutputTest {
 	public void testGivenExample() throws IOException {
 		compareToExpectedFiles("asgn3_Input.txt", "asgn3_Output.txt");
 	}
+
+	@Test
+	public void testMyGivenExample() throws IOException {
+		compareToExpectedFiles("my_asgn3_Input.txt", "my_asgn3_Output.txt");
+	}
 }

@@ -10,7 +10,7 @@ package de.ftes.uon.seng2200.pa3b;
  * @author Fredrik Teschke (3228760)
  *
  */
-public class SortedListImpl<T extends Comparable<T>> extends ArrayListImpl<T>
+public class SortedListImpl<T extends LessThanComparable<T>> extends ArrayListImpl<T>
 		implements SortedList<T> {
 	public SortedListImpl() {
 		super();
@@ -25,7 +25,7 @@ public class SortedListImpl<T extends Comparable<T>> extends ArrayListImpl<T>
 	@Override
 	public void insertInOrder(T data) {
 		for (T t : this) {
-			if (data.compareTo(t) < 0) {
+			if (data.lessThan(t)) {
 				super.insertBefore(data, t);
 				return;
 			}

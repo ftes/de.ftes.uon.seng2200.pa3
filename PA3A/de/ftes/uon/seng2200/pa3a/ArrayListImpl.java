@@ -329,6 +329,11 @@ public class ArrayListImpl<T> implements ArrayList<T> {
 				next = next.getNext();
 				return data;
 			}
+			
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException();
+			}
 		};
 	}
 

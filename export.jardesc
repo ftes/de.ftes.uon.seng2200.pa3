@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="/media/shared/Google Drive/Work/2015 UoN Master/Lectures/Programming Languages and Paradigms/pa3/c3228760PA3.zip"/>
+    <jar path="/media/fredrik/shared/Google Drive/Work/2015 UoN Master/Lectures/Programming Languages and Paradigms/pa3/c3228760PA3.zip"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/pa3/export.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="true"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
     <selectedElements exportClassFiles="false" exportJavaFiles="true" exportOutputFolder="false">
-        <javaElement handleIdentifier="=pa3/PA3A&lt;"/>
-        <javaElement handleIdentifier="=pa3/PA3B&lt;"/>
-        <file path="/pa3/WrittenReport.pdf"/>
-        <file path="/pa3/AssessmentItemCoverSheet.pdf"/>
-        <javaElement handleIdentifier="=pa3/PA3A&lt;de.ftes.uon.seng2200.pa3a"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{DistanceAttempt.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{ArrayListImpl.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{InvalidEventNameException.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{PA3A.java"/>
         <javaElement handleIdentifier="=pa3/PA3B&lt;de.ftes.uon.seng2200.pa3b"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{InvalidEventNameException.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{Distance.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{ArrayList.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{ListEmptyException.java"/>
+        <file path="/pa3/WrittenReport.pdf"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{Timed.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{DistanceAttempt.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{ListEmptyException.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{EventParser.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{Event.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{LessThanComparable.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{PA3B.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;de.ftes.uon.seng2200.pa3a"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{EventParser.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{SortedList.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{Event.java"/>
+        <file path="/pa3/AssessmentItemCoverSheet.pdf"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{SortedList.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{List.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{ArrayList.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{Distance.java"/>
+        <file path="/pa3/PA3B/asgn3_Input.txt"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{SortedListImpl.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{ListException.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{List.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{LessThanComparable.java"/>
+        <javaElement handleIdentifier="=pa3/PA3B&lt;{ArrayListImpl.java"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{SortedListImpl.java"/>
+        <file path="/pa3/PA3A/asgn3_Input.txt"/>
+        <javaElement handleIdentifier="=pa3/PA3A&lt;{ListException.java"/>
     </selectedElements>
 </jardesc>

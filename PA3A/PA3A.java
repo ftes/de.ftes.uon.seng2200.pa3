@@ -2,8 +2,6 @@
 
 import java.io.IOException;
 
-import de.ftes.uon.seng2200.pa3a.EventParser;
-
 /**
  * Course		SENG6220
  * Assignment	PA3A
